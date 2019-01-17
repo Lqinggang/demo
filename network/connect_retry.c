@@ -11,7 +11,7 @@ int connect_retry(int domain, int type, int protocol, const struct sockaddr *add
 	 *  Try to connect with exponential backoff.
 	 */
 	for(numsec = 1; numsec <= MAXSLEEP; numsec <<= 1) {
-		if((fd = sockfd(domain, type, protocol)) < 0) {
+		if((fd = socket(domain, type, protocol)) < 0) {
 			return (-1);
 		}
 
