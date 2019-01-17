@@ -1,4 +1,4 @@
-OBJS=connect_retry.o
+OBJS=connect_retry.o initserver.o
 CFLAGS=
 CC=gcc
 
