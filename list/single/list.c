@@ -182,26 +182,44 @@ free_list(plist head)
 }
 
 /*
+ * 输出node的值
+ * 成功，返回0
+ * 出错，1)node等于NULL, 返回-1
+ */
+int
+print_node(const plist node)
+{
+    if (node == NULL)
+    {
+        return (-1);
+    }
+    printf("%d\n", node->element);
+    return (0);
+}
+
+/*
  * 输出单链表数据
  * 成功，返回输出数据的个数
  * 出错，返回-1
  */
 int
-print_list(plist head)
+print_list(const plist head)
 {
+    plist tmp;
+    tmp = head;
 #ifdef LEADNODE  /* 带头结点 */
-    if (head == NULL)
+    if (tmp == NULL)
     {
         return (-1);
     }
-    head = head->next;
+    tmp = tmp->next;
 #endif 
 
     int out_count = 0;
-    while (head != NULL)
+    while (tmp != NULL)
     {
-        printf("%d ", head->element);
-        head = head->next;
+        printf("%d ", tmp->element);
+        tmp = tmp->next;
         out_count++;
     }
     if (out_count != 0)
@@ -363,4 +381,73 @@ delete_list_by_value(plist *head, int value)
 int
 delete_list_by_index(plist *head, int index)
 {
+}
+
+
+/*
+ * 查找head中第一个值为value的节点
+ * 成功，返回指向该节点的指针
+ * 出错，1) head为空， 2) 值为value的节点不存在， 返回NULL
+ */
+plist
+find_list_by_value(const plist head, int value)
+{
+    if (head == NULL)
+    {
+        return (NULL);
+    }
+
+    plist tmp;
+    tmp = head;
+#ifdef LEADNODE
+    tmp = tmp->next;
+#endif
+    while (tmp != NULL)
+    {
+        if (tmp->element == value)
+        {
+            return (tmp);
+        }
+        tmp = tmp->next;
+    }
+    return (NULL);
+}
+
+/*
+ * 查找head中第index个节点
+ * 成功，返回指向该节点的指针
+ * 出错，1) head为空， 2) 第index个(从1开始)节点不存在， 返回NULL
+ */
+plist
+find_list_by_index(const plist head, unsigned int index)
+{
+    if (head == NULL || index <= 0)
+    {
+        return (NULL);
+    }
+
+#ifdef  LEADNODE
+    if (head->element < index)
+    {
+        return (NULL);
+    }
+#endif
+
+    plist tmp;
+    tmp = head;
+#ifdef LEADNODE
+    tmp = tmp->next;
+#endif 
+    while (tmp != NULL && index - 1 > 0)  /* -1: Starting from 1 */
+    {
+        tmp = tmp->next;
+        index--;
+    }
+
+    if (tmp != NULL)
+    {
+        return (tmp);
+    }
+
+    return (NULL);
 }

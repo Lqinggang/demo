@@ -70,10 +70,61 @@ test_leadnode()
     print_list(head);
     printf("Number of linked list nodes: %d\n", head->element);
 
+    /* 查找特定值 */
+    printf("\nfind value on list: \n");
+    printf("list: \n");
+    print_list(head);
+    plist find_node = NULL;
+    int find_value = 2000;
+    if ((find_node = find_list_by_value(head, find_value)) == NULL)
+    {
+        printf("mainc.c: test_leadnode； can't find value: %d\n", find_value);
+    }
+    else
+    {
+        printf("find the value: ");
+        print_node(find_node);
+    }
 
+    int find_no_value = -2000;
+    if ((find_node = find_list_by_value(head, find_no_value)) == NULL)
+    {
+        printf("mainc.c: test_leadnode； can't find value: %d\n", find_no_value);
+    }
+    else
+    {
+        printf("find the value: ");
+        print_node(find_node);
+    }
 
+    /* 查找第index个节点 */
+    printf("\nfind the index node: \n");
+    printf("list: \n");
+    print_list(head);
+    plist find_index_node = NULL;
+    int find_index = 5;
+    if ((find_index_node = find_list_by_index(head, find_index)) == NULL)
+    {
+        printf("mainc.c: test_leadnode； %d non't exists\n", find_value);
+    }
+    else
+    {
+        printf("%dst node value is: ", find_index);
+        print_node(find_index_node);
+    }
 
+    int find_no_index = -1;
+    if ((find_index_node = find_list_by_index(head, find_no_index)) == NULL)
+    {
+        printf("mainc.c: test_leadnode； %d non't exists\n", find_no_index);
+    }
+    else
+    {
+        printf("%dst node value is: ", find_no_index);
+        print_node(find_index_node);
+    }
 
+   
     free_list(head);
     /*
      * 不能简单地判断head是否等于NULL，判断head是否被释放,
@@ -165,7 +216,62 @@ test_no_leadnode()
     }
     head = new_head;
     print_list(head);
- 
+
+     /* 查找特定值 */
+    printf("\nfind value on list: \n");
+    printf("list: \n");
+    print_list(head);
+    plist find_node = NULL;
+    int find_value = 300;
+    if ((find_node = find_list_by_value(head, find_value)) == NULL)
+    {
+        printf("mainc.c: test_leadnode； can't find value: %d\n", find_value);
+    }
+    else
+    {
+        printf("find the value: ");
+        print_node(find_node);
+    }
+
+    int find_no_value = -2000;
+    if ((find_node = find_list_by_value(head, find_no_value)) == NULL)
+    {
+        printf("mainc.c: test_leadnode； can't find value: %d\n", find_no_value);
+    }
+    else
+    {
+        printf("find the value: ");
+        print_node(find_node);
+    }
+
+    /* 查找第index个节点 */
+    printf("\nfind the index node: \n");
+    printf("list: \n");
+    print_list(head);
+    plist find_index_node = NULL;
+    int find_index = 5;
+    if ((find_index_node = find_list_by_index(head, find_index)) == NULL)
+    {
+        printf("mainc.c: test_leadnode； %d non't exists\n", find_value);
+    }
+    else
+    {
+        printf("%dst node value is: ", find_index);
+        print_node(find_index_node);
+    }
+
+    int find_no_index = -1;
+    if ((find_index_node = find_list_by_index(head, find_no_index)) == NULL)
+    {
+        printf("mainc.c: test_leadnode； %d non't exists\n", find_no_index);
+    }
+    else
+    {
+        printf("%dst node value is: ", find_no_index);
+        print_node(find_index_node);
+    }
+
+
 
 
     free_list(head);

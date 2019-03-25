@@ -14,8 +14,12 @@ extern plist insert_after_list(plist head, int value);
 extern plist insert_before_list(plist head, int value);
 extern plist insert_before_list_index(plist head, int index, int value);
 
-extern int print_list(plist head);
+extern int print_list(const plist head);
+extern int print_node(const plist head);
 
 extern void free_list(plist head);
+
+extern plist find_list_by_value(const plist head, int value);
+extern plist find_list_by_index(const plist head, unsigned int index);
 
 #endif  /* LIST_SINGLE_LIST_H */
