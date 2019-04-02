@@ -1,5 +1,9 @@
 EXECNAME=main
-OBJS=list.o main.o
+
+SRC=$(wildcard *.c)
+OBJS=$(patsubst %.c, %.o, $(SRC))
+
+
 CC=gcc
 CFLAGS= -g -D LEADNODE
 LINK=

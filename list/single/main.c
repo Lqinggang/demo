@@ -76,7 +76,7 @@ test_leadnode()
     print_list(head);
     plist find_node = NULL;
     int find_value = 2000;
-    if ((find_node = find_list_by_value(head, find_value)) == NULL)
+    if ((find_node = get_node_by_value(head, find_value)) == NULL)
     {
         printf("mainc.c: test_leadnode； can't find value: %d\n", find_value);
     }
@@ -87,9 +87,9 @@ test_leadnode()
     }
 
     int find_no_value = -2000;
-    if ((find_node = find_list_by_value(head, find_no_value)) == NULL)
+    if ((find_node = get_node_by_value(head, find_no_value)) == NULL)
     {
-        printf("mainc.c: test_leadnode； can't find value: %d\n", find_no_value);
+        printf("mainc.c: test_leadnode: can't find value: %d\n", find_no_value);
     }
     else
     {
@@ -103,9 +103,9 @@ test_leadnode()
     print_list(head);
     plist find_index_node = NULL;
     int find_index = 5;
-    if ((find_index_node = find_list_by_index(head, find_index)) == NULL)
+    if ((find_index_node = get_node_by_index(head, find_index)) == NULL)
     {
-        printf("mainc.c: test_leadnode； %d non't exists\n", find_value);
+        printf("mainc.c: test_leadnode: %d non't exists\n", find_index);
     }
     else
     {
@@ -114,7 +114,7 @@ test_leadnode()
     }
 
     int find_no_index = -1;
-    if ((find_index_node = find_list_by_index(head, find_no_index)) == NULL)
+    if ((find_index_node = get_node_by_index(head, find_no_index)) == NULL)
     {
         printf("mainc.c: test_leadnode； %d non't exists\n", find_no_index);
     }
@@ -223,7 +223,7 @@ test_no_leadnode()
     print_list(head);
     plist find_node = NULL;
     int find_value = 300;
-    if ((find_node = find_list_by_value(head, find_value)) == NULL)
+    if ((find_node = get_node_by_value(head, find_value)) == NULL)
     {
         printf("mainc.c: test_leadnode； can't find value: %d\n", find_value);
     }
@@ -234,7 +234,7 @@ test_no_leadnode()
     }
 
     int find_no_value = -2000;
-    if ((find_node = find_list_by_value(head, find_no_value)) == NULL)
+    if ((find_node = get_node_by_value(head, find_no_value)) == NULL)
     {
         printf("mainc.c: test_leadnode； can't find value: %d\n", find_no_value);
     }
@@ -250,7 +250,7 @@ test_no_leadnode()
     print_list(head);
     plist find_index_node = NULL;
     int find_index = 5;
-    if ((find_index_node = find_list_by_index(head, find_index)) == NULL)
+    if ((find_index_node = get_node_by_index(head, find_index)) == NULL)
     {
         printf("mainc.c: test_leadnode； %d non't exists\n", find_value);
     }
@@ -261,7 +261,7 @@ test_no_leadnode()
     }
 
     int find_no_index = -1;
-    if ((find_index_node = find_list_by_index(head, find_no_index)) == NULL)
+    if ((find_index_node = get_node_by_index(head, find_no_index)) == NULL)
     {
         printf("mainc.c: test_leadnode； %d non't exists\n", find_no_index);
     }

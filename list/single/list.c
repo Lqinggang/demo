@@ -331,17 +331,6 @@ insert_before_list_index(plist head, int index, int value)
 }
 
 /*
- * 查找第一个值为value的结点
- */
-plist
-get_node_by_value(const plist head, int value)
-{
-}
-
-
-
-
-/*
  * 删除head指向的链表中所有值为value的结点
  * 成功，返回删除的结点数
  * 出错，返回-1
@@ -390,7 +379,7 @@ delete_list_by_index(plist *head, int index)
  * 出错，1) head为空， 2) 值为value的节点不存在， 返回NULL
  */
 plist
-find_list_by_value(const plist head, int value)
+get_node_by_value(const plist head, int value)
 {
     if (head == NULL)
     {
@@ -419,7 +408,7 @@ find_list_by_value(const plist head, int value)
  * 出错，1) head为空， 2) 第index个(从1开始)节点不存在， 返回NULL
  */
 plist
-find_list_by_index(const plist head, unsigned int index)
+get_node_by_index(const plist head, unsigned int index)
 {
     if (head == NULL || index <= 0)
     {
