@@ -15,4 +15,7 @@ extern int test_insert_into_after_list(plist head);
 
 extern int print_student_list(plist head);
 
+extern int test_get_node_by_index(plist head);
+
+
 #endif  /* LIST_DOUBLE_TEST_H */

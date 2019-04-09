@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ * output student information.
+ * used for output list of the value member.
+ */
 static void
 print_stu(void *value)
 {
@@ -13,6 +17,9 @@ print_stu(void *value)
     }
 }
 
+/*
+ * test insert_into_before_list() 
+ */
 int
 test_insert_into_before_list(plist head)
 {
@@ -66,4 +73,23 @@ test_print_list(plist head)
 {
     list_init(&global_hooks);
     return (print_list(head));
+}
+
+int
+test_get_node_by_index(plist head)
+{
+    int index;
+    for (index = 0; index < 5; index++)
+    {
+        plist find_node = NULL; 
+        if ((find_node = get_node_by_index(head, index * 3)) != NULL)  /* get 0, 3, 6, 9, 12 nodes. */
+        {
+            printf("the %dth node: \n", index * 3);
+            print_stu(find_node->value);
+        }
+        else
+        {
+           printf("can't find node: %d\n", index * 3); 
+        }
+    }
 }

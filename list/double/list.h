@@ -13,9 +13,9 @@ typedef struct list {
 } *plist;
 
 typedef struct list_hooks {
-    void     (*print_func)(void *value);
-    void     *(*malloc_func)(size_t size);
-    void     (*free_func)(void *ptr);
+    void     (*print_func)(void *value);        /* output value(plist->value) */
+    void     *(*malloc_func)(size_t size);      /* allocated memory for value */
+    void     (*free_func)(void *ptr);           /* frees the memory space pointed to by ptr */
 } *plist_hooks;
 
 
@@ -27,5 +27,7 @@ extern int print_list(plist head);
 
 extern plist insert_into_before_list(plist head, void *value);
 extern plist insert_into_after_list(plist head, void *value);
+
+extern plist get_node_by_index(plist head, unsigned int index);
 
 #endif  /* LIST_DOUBLE_LIST_H */

@@ -163,3 +163,24 @@ insert_into_after_list(plist head, void *value)
 
     return (new_node);
 }
+
+/*
+ * get the index(starting from 1) node.
+ * return the node pointer on success,
+ * or NULL on error.
+ */
+plist
+get_node_by_index(plist head, unsigned int index)
+{
+    if (head == NULL || index <= 0)
+    {
+        return (NULL);
+    }
+    
+    plist node = NULL;
+    node = head;
+    while ((node = node->next) != NULL && index-- > 1)
+    ;
+   
+    return (node);
+}
