@@ -25,6 +25,12 @@ main(void)
     /* get the node by index */
     printf("test_get_node_by_index: \n");
     test_get_node_by_index(head);
+
+    /* delete the node by index */ 
+    printf("test_delete_node_by_index: \n");
+    test_delete_node_by_index(head);
+    printf("after delete: \n");
+    test_print_list(head);
     
     /* free the doubly linked list */
     free_list(head);

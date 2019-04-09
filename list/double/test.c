@@ -93,3 +93,21 @@ test_get_node_by_index(plist head)
         }
     }
 }
+
+/* test delete_node_by_index() */
+int
+test_delete_node_by_index(plist head)
+{
+    int index;
+    for (index = 0; index < 5; index++)
+    {
+        if (delete_node_by_index(head, index * 2) < 0)
+        {
+            printf("delete node error: %d\n", index * 2);
+        }
+        else
+        {
+            printf("delete node success: %d\n", index * 2);
+        }
+    }
+}

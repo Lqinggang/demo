@@ -184,3 +184,52 @@ get_node_by_index(plist head, unsigned int index)
    
     return (node);
 }
+
+
+/*
+ * delete index(starting from 1) node.
+ * returns the number of nodes deleted on success,
+ * or -1 on error.
+ */
+int
+delete_node_by_index(plist head, unsigned int index)
+{
+    if (head == NULL || index <= 0)
+    {
+        return (-1);
+    }
+    
+    /* find the precursor node. */
+    plist precursor_node = NULL;
+    precursor_node = head;
+    while ((precursor_node != NULL) && index-- > 1)
+    {
+        precursor_node = precursor_node->next;
+    }
+
+    /* the predecessor node is not NULL and the deleted node exists */
+    if (precursor_node == NULL || precursor_node->next == NULL)
+    {
+        return (-1);
+    }
+
+    /* change the link to the doubly linked list. */
+    plist delete_node = NULL;
+    delete_node = precursor_node->next;
+    precursor_node->next = delete_node->next;
+    if (delete_node->next != NULL)
+    {
+        delete_node->next->prev = precursor_node;
+    }
+    delete_node->next = NULL;
+    delete_node->prev = NULL;
+    
+    /* delete node */
+    if (global_hooks.free_func != NULL && delete_node->value != NULL)
+    {
+        global_hooks.free_func(delete_node->value);
+    }
+    free(delete_node);
+    delete_node = NULL;
+    return (1); 
+}

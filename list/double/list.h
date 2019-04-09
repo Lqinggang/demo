@@ -30,4 +30,6 @@ extern plist insert_into_after_list(plist head, void *value);
 
 extern plist get_node_by_index(plist head, unsigned int index);
 
+extern int delete_node_by_index(plist head, unsigned int index);
+
 #endif  /* LIST_DOUBLE_LIST_H */
