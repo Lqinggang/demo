@@ -185,6 +185,33 @@ get_node_by_index(plist head, unsigned int index)
     return (node);
 }
 
+/*
+ * get the node by value.
+ * return the node pointer on success,
+ * or NULL on error.
+ */
+plist
+get_node_by_value(plist head, void *value, int (*compare)(void *value1, void *value2))
+{
+    if (head == NULL || value == NULL || compare == NULL)
+    {
+        return (NULL);
+    }
+
+    plist find_node = NULL;
+    find_node = head->next;
+
+    /* find the node */
+    while (find_node != NULL)
+    {
+        if (compare(value, find_node->value) == 0)
+        {
+            break;
+        }
+        find_node = find_node->next;
+    }
+    return (find_node);
+}
 
 /*
  * delete index(starting from 1) node.

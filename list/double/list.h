@@ -29,6 +29,7 @@ extern plist insert_into_before_list(plist head, void *value);
 extern plist insert_into_after_list(plist head, void *value);
 
 extern plist get_node_by_index(plist head, unsigned int index);
+extern plist get_node_by_value(plist head, void *value, int (*compare)(void *value1, void *value2));
 
 extern int delete_node_by_index(plist head, unsigned int index);
 

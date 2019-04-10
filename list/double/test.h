@@ -16,6 +16,7 @@ extern int test_insert_into_after_list(plist head);
 extern int print_student_list(plist head);
 
 extern int test_get_node_by_index(plist head);
+extern void test_get_node_by_value(plist head);
 
 extern int test_delete_node_by_index(plist head);
 

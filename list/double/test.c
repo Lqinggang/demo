@@ -1,6 +1,7 @@
 #include "test.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
  * output student information.
@@ -91,6 +92,66 @@ test_get_node_by_index(plist head)
         {
            printf("can't find node: %d\n", index * 3); 
         }
+    }
+}
+
+/*
+ * find the node by value.
+ */
+static int
+compare(void *value1, void *value2)
+{
+    struct student *stu[2];
+    stu[0] = (struct student *)value1;
+    stu[1] = (struct student *)value2;
+
+    if (stu[0]->stu_id == stu[1]->stu_id
+        && strcmp(stu[0]->stu_name, stu[1]->stu_name) == 0
+        && stu[0]->stu_age == stu[1]->stu_age
+        && stu[0]->stu_gender == stu[1]->stu_gender)
+    {
+        return (0);
+    }
+    return (-1); 
+}
+
+void
+test_get_node_by_value(plist head)
+{
+    struct student stu[2];
+    stu[0].stu_id = 0;
+    strcpy(stu[0].stu_name, "name[0]");
+    stu[0].stu_age = 0;
+    stu[0].stu_gender = 0;
+
+    stu[1].stu_id = -1;
+    strcpy(stu[1].stu_name, "name[-1]");
+    stu[1].stu_age = -1;
+    stu[1].stu_gender = -1;
+
+    plist find_node = NULL;
+    /* it will be found */
+    if ((find_node = get_node_by_value(head, &stu[0], compare)) != NULL)
+    {
+        printf("find the node: \n");
+        print_stu(find_node->value);
+    }
+    else
+    {
+        printf("can't find the node: \n");
+        print_stu(&stu[0]);
+    }
+
+    /* the node could not be found */
+    if ((find_node = get_node_by_value(head, &stu[1], compare)) != NULL)
+    {
+        printf("find the node: \n");
+        print_stu(find_node->value);
+    }
+    else
+    {
+        printf("can't find the node: \n");
+        print_stu(&stu[1]);
     }
 }
 
