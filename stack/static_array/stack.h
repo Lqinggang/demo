@@ -6,8 +6,8 @@
 typedef  int    STACK_TYPE;
 
 extern void push(STACK_TYPE value);
-extern void pop(void);
-extern STACK_TYPE top(void);
+extern STACK_TYPE *pop(void);
+extern STACK_TYPE *top(void);
 extern int is_empty(void);
 extern int is_full(void);
 

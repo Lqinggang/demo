@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stdio.h>
 
 static STACK_TYPE  stack[STACK_SIZE];
 static int top_element = -1;
@@ -6,21 +7,30 @@ static int top_element = -1;
 void
 push(STACK_TYPE value)
 {
+    if (is_full() == 0)
+    {
+        stack[++top_element] = value;
+    }
 }
 
-void
+STACK_TYPE *
 pop(void)
 {
+    if (is_empty() == 0)
+    {
+        return (&stack[top_element--]);
+    }
+    return (NULL);
 }
 
-STACK_TYPE
+STACK_TYPE *
 top(void)
 {
    if (is_empty() == 0)
    {
-        return (stack[top_element]);
+        return (&stack[top_element]);
    }
-   return (-1);
+   return (NULL);
 }
 
 int
