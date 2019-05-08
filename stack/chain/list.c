@@ -1,27 +1,28 @@
 #include "list.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 
 struct list *
-create_list(struct list *head)
+create_list(struct list *head, STACK_TYPE value)
 {
-    return (NULL);
+    if ((head = (struct list *)malloc(sizeof(struct list))) != NULL)
+    {
+       head->next = NULL;
+       head->value = value;
+    }
+    return (head);
 }
 
-struct list *
-insert_before_list(struct list *head)
+void
+destroy_list(struct list *head)
 {
-    return (NULL);
-}
-
-struct list *
-get_first_node(struct list *head)
-{
-    return (NULL);
-}
-
-struct list *
-delete_first_node(struct list *head)
-{
-    return (NULL);
+    while (head != NULL)
+    {
+        struct list *free_list = NULL;
+        free_list = head;
+        head = head->next;
+        free(free_list);
+        free_list = NULL;
+    }
 }

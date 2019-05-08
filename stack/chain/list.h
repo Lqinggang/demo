@@ -9,7 +9,9 @@ typedef struct list {
 } *plist;
 
 
-extern struct list *create_list(struct list *head);  /* for create_stack */
+extern struct list *create_list(struct list *head, STACK_TYPE value);  /* for create_stack */
+extern void destroy_list(struct list *head);  /* for destroy stack */
+
 extern struct list *insert_before_list(struct list *head);  /* for push() */
 extern struct list *get_first_node(struct list *head);  /* for top() */
 extern struct list *delete_first_node(struct list *head);  /* for pop() */

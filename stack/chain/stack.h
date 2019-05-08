@@ -7,12 +7,12 @@ typedef struct stack {
     struct list *node;
 } *pstack;
 
-extern pstack create_stack(void);
-extern int destroy_stack(pstack stack);
-extern int push(pstack stack, STACK_TYPE value);
-extern STACK_TYPE *pop(pstack stack);
-extern STACK_TYPE *top(const pstack stack);
-extern int is_empty(const pstack stack);
-extern int is_full(const pstack stack);
+extern struct stack *create_stack(void);
+extern void destroy_stack(struct stack *stack);
+extern int push(struct stack *stack, STACK_TYPE value);
+extern void pop(struct stack *stack);
+extern STACK_TYPE *top(const struct stack *stack);
+extern int is_empty(const struct stack *stack);
+extern int is_full(const struct stack *stack);
 
 #endif  /* STACK_CHAIN_STACK_H */
